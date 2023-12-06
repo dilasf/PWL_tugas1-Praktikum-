@@ -2,12 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use App\Models\Bookshelf;
+use Illuminate\Database\Seeder;
 
 class BookshelfSeeder extends Seeder
 {
@@ -16,53 +12,28 @@ class BookshelfSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = Bookshelf::insert([
+
+        Bookshelf::insert([
             [
-                'id' => 1,
-                'code' => '620',
-                'name' => 'Engineering',
+                'id' => '1',
+                'code' => '620', 'name' => 'Engineering',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'id' => 2,
+                'id' => '2',
                 'code' => '621',
                 'name' => 'Mechanical',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'id' => 3,
+                'id' => '3',
                 'code' => '622',
-                'name' => 'Topographical',
+                'name' => 'Topoographical',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
-
-
-
-        // DB::table('bookshelves')->insert(
-        //     [
-        //     'id' => '1',
-        //     'code' => '620',
-        //     'name' => 'Engineering',
-        //     // 'created_at' => now(),
-        //     // 'updated_at' => now()
-        //     ],
-        //     [
-        //         'id' => '2',
-        //         'code' => '621',
-        //         'name' => 'Mechanichal',
-        //         // 'created_at' => now(),
-        //         // 'updated_at' => now()
-        //     ],
-        //     [
-        //             'id' => '3',
-        //             'code' => '622',
-        //             'name' => 'Topographical',
-        //             // 'created_at' => now(),
-        //             // 'updated_at' => now()
-        //     ],
-    ]);
+        ]);
     }
 }

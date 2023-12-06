@@ -22,9 +22,10 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             BookshelfSeeder::class,
             BookSeeder::class,
-            RoleSeeder::class,
-            PermissionSeeder::class,
+            // RoleSeeder::class,
+            // PermissionSeeder::class,
             PustakawanSeeder::class,
+            //GeneralSeeder::class,
 
         ]);
     }

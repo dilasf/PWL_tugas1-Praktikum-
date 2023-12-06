@@ -2,12 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
-use App\Models\Permission;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\User;
+// use App\Models\Role;
+//use App\Models\Permission;
+
 
 class PustakawanSeeder extends Seeder
 {
@@ -16,6 +20,28 @@ class PustakawanSeeder extends Seeder
      */
     public function run(): void
     {
+
+
+
+        $user = Role::create([
+            'name' => 'pustakawan'
+        ]);
+
+        $anggota = Role::create([
+            'name' => 'anggota'
+        ]);
+        $permission = Permission::create([
+            'name' => 'create'
+        ]);
+        $permission = Permission::create([
+            'name' => 'update'
+        ]);
+        $permission = Permission::create([
+            'name' => 'read'
+        ]);
+        $permission = Permission::create([
+            'name' => 'delete'
+        ]);
         $user = User::create([
             'name' => 'Pustakawan',
             'email' => 'pustakawan@gmail.com',
@@ -35,6 +61,12 @@ class PustakawanSeeder extends Seeder
             'updated_at' => now(),
         ]);
         $anggota->assignRole('anggota');
+
+        // $role_admin->givePermissionTo('read');
+    //     // $role_admin->givePermissionTo('update');
+    //     // $role_admin->givePermissionTo('delete');
+    //     // $role_admin->givePermissionTo('create');
+    //     // $role_anggota->givePermissionTo('read');
 
     }
 }

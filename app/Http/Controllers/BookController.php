@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Book;
 use App\Models\Bookshelf;
+use App\Exports\BooksExport;
+use App\Imports\BooksImport;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 
@@ -122,15 +125,34 @@ class BookController extends Controller
     }
 
     public function print()
-{
+    {
     $books = Book::all();
     $pdf = PDF::loadView('books.print', ['books' => $books]);
     return $pdf->download('data_buku.pdf');
-}
+    }
 // public function print(){
 //     $data['books'] = Book::all();
 //     $pdf = Pdf::loadView('books.print', $data);
 //     return $pdf->download('book.pdf');
 // }
 
+    public function export()
+    {
+        return Excel::download(new BooksExport, 'data_buku.xlsx');
+    }
+
+    public function import(Request $req) {
+        $req->validate([
+            'file' => 'required|max:10000|mimes:xlsx,xls',
+        ]);
+
+
+        Excel::import(new BooksImport, $req->file('file'));
+
+        $notification = array(
+            'message' => 'Import data berhasil dilakukan',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('book')->with($notification);
+    }
 }

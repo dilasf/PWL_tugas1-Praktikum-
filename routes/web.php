@@ -29,12 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::middleware('auth')->group(function () {
-//     Route::view('/roles', 'role')->name('role')->middleware(['role:pustakawan']);
-// });
-
-Route::middleware(['role:pustakawan', 'auth'])->group(function () {
-    Route::view('/roles', 'role');
+Route::middleware('auth')->group(function () {
+    Route::view('/roles', 'role')->name('role')->middleware(['role:pustakawan']);
 });
 
 
@@ -46,6 +42,8 @@ Route::middleware('auth')->group(function () {
     Route::match(['put', 'patch'],'/book/{id}', [BookController::class, 'update'])->name('book.update');
     Route::delete('/book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
     Route::get('/books/print', [BookController::class, 'print'])->name('book.print');
+    Route::get('/books/export', [BookController::class, 'export'])->name('book.export');
+    Route::post('/books/import', [BookController::class, 'import'])->name('book.import');
 });
 
 require __DIR__.'/auth.php';
