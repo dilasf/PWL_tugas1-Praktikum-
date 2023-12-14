@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-// use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\View\View;
+
+use Barryvdh\DomPDF\Facade\Pdf;
+
 use App\Models\Book;
 use App\Models\Bookshelf;
 use App\Exports\BooksExport;
 use App\Imports\BooksImport;
-use PDF;
 use Maatwebsite\Excel\Facades\Excel;
 
 
